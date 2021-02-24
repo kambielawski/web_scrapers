@@ -54,7 +54,8 @@ def getCompanyMetrics(company):
         metric.reverse()
 
         df['date'] = dates
-        df['company'] = company[company.find('/')+1:]
+        ticker_company = company.split('/')
+        df['company'], df['ticker'] = ticker_company[1], ticker_company[0]
         df[url[0]] = metric
     
     # remove rows w/ empty string values
